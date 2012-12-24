@@ -13,17 +13,6 @@ import entity.EntityPlayer;
 public class Collision {
 	
 	public static EntityPlayer player = new EntityPlayer();
-	
- 	public static boolean playerIsCollidingWithEntity(EntityPlayer entity1, Entity entity2) {
-		if(entity1.getX() + entity1.getWidth() > entity2.getX() && entity1.getX() < entity2.getX() + entity2.getWidth()) {
-    		if(entity1.getY() + entity1.getHeight() > entity2.getY() && entity1.getY() < entity2.getY() + entity2.getHeight()) {
-    			if(entity1.getZ() + entity1.getWidth() > entity2.getZ() && entity1.getZ() < entity2.getZ() + entity2.getWidth()) {
-    				//return true;
-            	}
-        	}
-    	}
- 		return false;
-	}
  	
  	public static boolean checkPlayerCollision(float x, float y, float z) {
  		Entity activeCube = EntityList.cubes.get(0);
