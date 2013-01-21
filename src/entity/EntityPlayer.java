@@ -17,7 +17,7 @@ public class EntityPlayer {
 	public float maxViewNeg = -90;
 	
 	private float width = 0.5f;
-	private float height = 2;
+	private float height = 1;
 	
 	private final float constantSpeed = 5;
 	private float variableSpeed = constantSpeed;

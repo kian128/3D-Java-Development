@@ -18,8 +18,8 @@ public class Camera {
 	
 	public void moveCamera() {
 		if(Mouse.isGrabbed()) {
-			float mouseDY = Mouse.getDY() * mouseSensitivity * 0.0005f * Main.delta;
-			float mouseDX = Mouse.getDX() * mouseSensitivity * 0.0005f * Main.delta;
+			float mouseDY = Mouse.getDY() * mouseSensitivity * 0.01f;
+			float mouseDX = Mouse.getDX() * mouseSensitivity * 0.01f;
 			if (player.getRotX() - mouseDY >= player.maxViewNeg && player.getRotX() - mouseDY <= player.maxViewPos) {
                 player.changeRotX(-mouseDY);
             } else if (player.getRotX() - mouseDY < player.maxViewNeg) {
@@ -36,6 +36,6 @@ public class Camera {
 		glRotatef(player.getRotX(), 1, 0, 0);
         glRotatef(player.getRotY(), 0, 1, 0);
         glRotatef(player.getRotZ(), 0, 0, 1);
-        glTranslatef(-player.getX() - player.getWidth() / 2, -player.getY() - player.getHeight() / 2, -player.getZ() - player.getWidth() / 2);
+        glTranslatef(-player.getX() - player.getWidth() / 2, -player.getY() - player.getHeight(), -player.getZ() - player.getWidth() / 2);
 	}
 }

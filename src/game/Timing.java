@@ -8,6 +8,8 @@ public class Timing {
 	private long lastFrame = getTime();
 	private int fps;
 	
+	public static int delta;
+	
 	public long getTime() {
 		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
 	}

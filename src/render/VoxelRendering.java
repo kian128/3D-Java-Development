@@ -23,7 +23,7 @@ public class VoxelRendering {
 	public static int numberOfVertices = 24;
 	public static int numberOfNormals = 6;
 	public static double probability = 1;
-	public static float noise = 0.55f;
+	public static float noise = 0.5f;
 	
 	public static FloatBuffer vertexData, normalData;
 	public static int vertexHandler, normalHandler;
@@ -42,10 +42,10 @@ public class VoxelRendering {
 		for(int x = startX; x < chunkSize; x++) {
 			for(int z = startZ; z < chunkSize; z++) {
 				if(random.nextInt((int) (1 / probability)) <= 1) {
-					vertexData.put(renderCubeVertices(x * cubeSize, (float) Math.sin(x * z) * noise * cubeSize, z * cubeSize));
-					normalData.put(renderCubeNormals(x * cubeSize, (float) Math.sin(x * z) * noise * cubeSize, z * cubeSize));
+					vertexData.put(renderCubeVertices(x * cubeSize, (float) Math.sin(x * z) * (startY + noise) * cubeSize, z * cubeSize));
+					normalData.put(renderCubeNormals(x * cubeSize, (float) Math.sin(x * z) * (startY + noise) * cubeSize, z * cubeSize));
 					
-					Entity cube = new EntityCube(new Vector3f(x * cubeSize, (float) Math.sin(x * z) * noise * cubeSize, z * cubeSize), new Vector3f(0, 0, 0), cubeSize, cubeSize);
+					Entity cube = new EntityCube(new Vector3f(x * cubeSize, (float) Math.sin(x * z) * (startY + noise) * cubeSize, z * cubeSize), new Vector3f(0, 0, 0), cubeSize, cubeSize);
 					EntityList.cubes.add(cube);
 				}
 			}
@@ -66,7 +66,7 @@ public class VoxelRendering {
         
        	glEnableClientState(GL_VERTEX_ARRAY);
        	glEnableClientState(GL_NORMAL_ARRAY);
-       		glColor3f(1f, 0f, 0f);
+       		glColor3f(1f, 0, 0);
        		//glMaterialf(GL_FRONT, GL_SHININESS, 10f);
        		glDrawArrays(GL_QUADS, 0, calculateNumberOfCubes() * 24);
        	glDisableClientState(GL_NORMAL_ARRAY); 
